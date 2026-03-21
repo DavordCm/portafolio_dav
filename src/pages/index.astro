@@ -1,11 +1,605 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+  {
+    id: "QUEST_001",
+    title: "E-COMMERCE ENGINE",
+    stack: ["React", "Node.js", "PostgreSQL"],
+    desc: "Marketplace full-stack con inventario en tiempo real y procesamiento de pagos.",
+    status: "COMPLETED",
+    xp: "+2500 XP",
+  },
+  {
+    id: "QUEST_002",
+    title: "API GATEWAY",
+    stack: ["Rust", "Docker", "Redis"],
+    desc: "REST API de alto rendimiento procesando 10k req/s con zero downtime.",
+    status: "COMPLETED",
+    xp: "+1800 XP",
+  },
+  {
+    id: "QUEST_003",
+    title: "REAL-TIME DASHBOARD",
+    stack: ["Vue.js", "WebSocket", "D3.js"],
+    desc: "Dashboard de analytics en vivo con visualización de datos acelerada por WebGL.",
+    status: "IN_PROGRESS",
+    xp: "+3200 XP",
+  },
+  {
+    id: "QUEST_004",
+    title: "MOBILE APP",
+    stack: ["React Native", "Firebase", "TypeScript"],
+    desc: "App multiplataforma con arquitectura offline-first y notificaciones push.",
+    status: "COMPLETED",
+    xp: "+2100 XP",
+  },
+];
+
+const skills = [
+  { name: "JavaScript / TypeScript", level: 95, rank: "S" },
+  { name: "React / Next.js",         level: 90, rank: "S" },
+  { name: "Node.js / Express",       level: 88, rank: "A" },
+  { name: "Python / Django",         level: 80, rank: "A" },
+  { name: "PostgreSQL / MongoDB",    level: 85, rank: "A" },
+  { name: "Docker / CI-CD",          level: 78, rank: "B" },
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="DAVOR_POLLERI // PORTFOLIO_OS v1.0">
+
+  <!-- ========== SCANLINES OVERLAY ========== -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="nav-logo pf">BIT_STREAM_OS</div>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link active pf">HOME</a></li>
+      <li><a href="#quests" class="nav-link pf">QUESTS</a></li>
+      <li><a href="#stats" class="nav-link pf">STATS</a></li>
+      <li><a href="#contact" class="nav-link pf">SAVE</a></li>
+    </ul>
+    <div class="nav-icon pf">&#9608;</div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="level-badge pf">LVL_SENIOR_DEVELOPER</div>
+      <h1 class="hero-title pf">
+        PROTOCOL <span class="neon">NEON</span>
+      </h1>
+      <p class="hero-desc">
+        Traduciendo lógica de bajo nivel en experiencias digitales de alta fidelidad.
+        Especializado en <span class="highlight">sistemas pixel-perfect</span>,
+        <span class="highlight">optimización en tiempo real</span>,
+        y pureza arquitectónica.
+      </p>
+      <div class="hero-buttons">
+        <a href="#quests" class="btn btn-primary pf">VIEW QUESTS &rarr;</a>
+        <a href="#contact" class="btn btn-secondary pf">HIRE ME &#9889;</a>
+      </div>
+      <div class="breadcrumb pf">
+        <span>ROOT</span>
+        <span class="sep">&#9654;</span>
+        <span>SOURCE</span>
+        <span class="sep">&#9654;</span>
+        <span class="neon">HERO_MAIN.ROM</span>
+      </div>
+    </div>
+
+    <div class="hero-avatar">
+      <div class="avatar-frame">
+        <div class="avatar-inner">
+          <img
+            src="/avatar2.jpg"
+            alt="Davor Polleri"
+            style="width:100%;height:100%;object-fit:cover;image-rendering:pixelated;filter:contrast(1.1) saturate(0.85);"
+          />
+        </div>
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+      </div>
+      <div class="status-badge pf">
+        <span class="status-dot"></span>
+        STATUS<br/>
+        <span class="neon">STABLE // v1.0.GB</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATS PREVIEW ========== -->
+  <section class="stats-preview">
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label pf">COMMITS_DEPLOYED</span>
+        <span class="stat-arrows pf">&lt; &gt;</span>
+      </div>
+      <div class="stat-value pf neon">12,482+</div>
+      <p class="stat-desc">Backends robustos y frontends optimizados en 50+ proyectos comerciales.</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label pf">SYSTEM_XP</span>
+      </div>
+      <div class="stat-value pf neon">LVL 99</div>
+      <p class="stat-desc">Dominio en React, Node.js y entornos de desarrollo modernos.</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-header">
+        <span class="stat-label pf">UPTIME</span>
+      </div>
+      <div class="stat-value pf neon">99.9%</div>
+      <p class="stat-desc">Entrega confiable y código de alto rendimiento.</p>
+    </div>
+  </section>
+
+  <!-- ========== QUESTS / PROJECTS ========== -->
+  <section id="quests" class="section">
+    <div class="section-header">
+      <div class="section-tag pf">// ACTIVE_QUESTS</div>
+      <h2 class="section-title pf">QUEST_LOG</h2>
+      <p class="section-sub">Misiones completadas y en progreso en el reino digital.</p>
+    </div>
+    <div class="quests-grid">
+      {projects.map((p) => (
+        <div class="quest-card">
+          <div class="quest-id pf">{p.id}</div>
+          <h3 class="quest-title pf">{p.title}</h3>
+          <p class="quest-desc">{p.desc}</p>
+          <div class="quest-stack">
+            {p.stack.map((tech) => (
+              <span class="tech-tag pf">{tech}</span>
+            ))}
+          </div>
+          <div class="quest-footer">
+            <span class={`quest-status pf ${p.status === 'IN_PROGRESS' ? 'in-progress' : 'completed'}`}>
+              [{p.status}]
+            </span>
+            <span class="quest-xp pf neon">{p.xp}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ========== SKILLS / STATS ========== -->
+  <section id="stats" class="section">
+    <div class="section-header">
+      <div class="section-tag pf">// SKILL_TREE</div>
+      <h2 class="section-title pf">CHARACTER_STATS</h2>
+      <p class="section-sub">Atributos principales y habilidades desbloqueadas.</p>
+    </div>
+    <div class="skills-grid">
+      {skills.map((s) => (
+        <div class="skill-item">
+          <div class="skill-header">
+            <span class="skill-name pf">{s.name}</span>
+            <span class={`skill-rank pf rank-${s.rank.toLowerCase()}`}>[{s.rank}]</span>
+          </div>
+          <div class="xp-bar">
+            <div class="xp-fill" style={`width:${s.level}%`}></div>
+          </div>
+          <span class="skill-pct pf">{s.level}/100</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <div class="section-tag pf">// SEND_REQUEST</div>
+      <h2 class="section-title pf">INIT_CONTACT</h2>
+      <p class="section-sub">¿Listo para desplegar un nuevo proyecto? Conectemos.</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="ci-item pf">
+          <span class="ci-lbl">EMAIL_ADDR</span>
+          <a href="mailto:tu@email.com" class="ci-val neon">tu@email.com</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">GITHUB</span>
+          <a href="https://github.com/DavordCm" target="_blank" class="ci-val neon">@DavordCm</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">LINKEDIN</span>
+          <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="ci-val neon">in/davor-polleri-llalleri</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">STATUS</span>
+          <span class="ci-val neon">AVAILABLE_FOR_HIRE</span>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label pf">IDENTIFIER</label>
+          <input type="text" class="form-input" placeholder="> Tu nombre..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label pf">EMAIL_ADDR</label>
+          <input type="email" class="form-input" placeholder="> tu@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label pf">MESSAGE_BODY</label>
+          <textarea class="form-input form-textarea" placeholder="> Iniciar transmisión..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary pf">SEND_REQUEST &#9889;</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="pf ft-left">&#169;2024 DAVOR_POLLERI_GB</div>
+    <div class="ft-links">
+      <a href="https://github.com/DavordCm" target="_blank" class="ft-link pf">GITHUB</a>
+      <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="ft-link pf">LINKEDIN</a>
+      <a href="#" class="ft-link pf">DEBUG</a>
+    </div>
+    <div class="pf ft-right">BATTERY: 94% // SIGNAL: HIGH</div>
+  </footer>
+
 </Layout>
+
+<!-- ========================================= -->
+<!--                 STYLES                    -->
+<!-- ========================================= -->
+<style>
+  /* ---------- SCANLINES ---------- */
+  .scanlines {
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.04) 2px, rgba(0,0,0,0.04) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    left: 0; width: 100%; height: 6px;
+    background: rgba(59,158,255,0.06);
+    animation: scanmove 4s linear infinite;
+  }
+
+  /* ---------- NAVBAR ---------- */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .75rem 2rem;
+    background: rgba(8,14,26,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+  .nav-logo { font-size: .65rem; color: var(--text); letter-spacing: 1px; }
+  .nav-links {
+    display: flex; gap: 1.5rem; list-style: none;
+  }
+  .nav-link {
+    font-size: .45rem; color: var(--text-dim);
+    padding: .4rem .6rem;
+    transition: color .2s, text-shadow .2s;
+    letter-spacing: 1px;
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--green);
+    text-shadow: 0 0 8px var(--glow);
+  }
+  .nav-icon { font-size: .5rem; color: var(--text-dim); cursor: pointer; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 6rem 4rem 3rem;
+    gap: 3rem;
+  }
+  .hero-content { flex: 1; max-width: 600px; }
+
+  .level-badge {
+    display: inline-block;
+    font-size: .4rem;
+    padding: .35rem .7rem;
+    border: 1px solid var(--green);
+    color: var(--green);
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    animation: glitch 6s infinite;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-dim);
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--green-dk);
+    padding-left: 1rem;
+  }
+  .hero-buttons { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+
+  .btn {
+    display: inline-block;
+    padding: .85rem 1.6rem;
+    font-size: .45rem;
+    border: 2px solid var(--green);
+    color: var(--green);
+    transition: all .25s;
+    cursor: pointer;
+    background: transparent;
+    letter-spacing: 1px;
+  }
+  .btn-primary {
+    background: rgba(59,158,255,0.08);
+  }
+  .btn-primary:hover {
+    background: var(--green);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow);
+  }
+  .btn-secondary:hover {
+    background: rgba(59,158,255,0.12);
+    box-shadow: 0 0 12px var(--glow);
+  }
+
+  .breadcrumb {
+    font-size: .35rem;
+    color: var(--text-dim);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .breadcrumb .sep { color: var(--green-dk); font-size: .3rem; }
+
+  /* ---------- HERO AVATAR ---------- */
+  .hero-avatar {
+    position: relative;
+    flex-shrink: 0;
+  }
+  .avatar-frame {
+    position: relative;
+    width: 280px; height: 310px;
+    border: 2px solid var(--green);
+    background: var(--card);
+    overflow: hidden;
+    animation: pulse-border 4s ease-in-out infinite;
+  }
+  .avatar-inner {
+    width: 100%; height: 100%;
+    background: var(--bg2);
+  }
+  .avatar-inner img {
+    display: block;
+  }
+
+  /* corner decorations */
+  .corner {
+    position: absolute;
+    width: 12px; height: 12px;
+    border-color: var(--green);
+    border-style: solid;
+  }
+  .corner.tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
+  .corner.tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; }
+  .corner.bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; }
+  .corner.br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
+
+  .status-badge {
+    position: absolute;
+    bottom: -10px; right: -20px;
+    font-size: .32rem;
+    background: var(--card);
+    border: 1px solid var(--green);
+    padding: .5rem .7rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+  }
+  .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    margin-right: .3rem;
+    animation: blink 2s infinite;
+  }
+
+  /* ---------- STATS PREVIEW ---------- */
+  .stats-preview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 3rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    transition: border-color .3s, box-shadow .3s;
+  }
+  .stat-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 16px var(--glow);
+  }
+  .stat-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: .8rem;
+  }
+  .stat-label { font-size: .38rem; color: var(--text-dim); letter-spacing: 1px; }
+  .stat-arrows { font-size: .45rem; color: var(--text-dim); }
+  .stat-value { font-size: 1.6rem; margin-bottom: .6rem; }
+  .stat-desc { font-size: .82rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* ---------- SECTIONS ---------- */
+  .section {
+    padding: 5rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .section-header { margin-bottom: 3rem; }
+  .section-tag {
+    font-size: .35rem; color: var(--text-dim);
+    margin-bottom: .6rem; letter-spacing: 1px;
+  }
+  .section-title {
+    font-size: 1.4rem; margin-bottom: .6rem;
+    color: var(--green);
+    text-shadow: 0 0 10px var(--glow);
+  }
+  .section-sub { font-size: .9rem; color: var(--text-dim); }
+
+  /* ---------- QUESTS GRID ---------- */
+  .quests-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .quest-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.8rem;
+    transition: all .3s;
+    animation: fadeup .6s ease both;
+  }
+  .quest-card:nth-child(2) { animation-delay: .1s; }
+  .quest-card:nth-child(3) { animation-delay: .2s; }
+  .quest-card:nth-child(4) { animation-delay: .3s; }
+  .quest-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 16px var(--glow);
+    transform: translateY(-3px);
+  }
+  .quest-id { font-size: .32rem; color: var(--text-dim); margin-bottom: .5rem; letter-spacing: 1px; }
+  .quest-title { font-size: .55rem; color: var(--green); margin-bottom: .8rem; letter-spacing: 1px; }
+  .quest-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 1rem; }
+  .quest-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  .tech-tag {
+    font-size: .3rem;
+    padding: .25rem .5rem;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    letter-spacing: 1px;
+  }
+  .quest-footer { display: flex; justify-content: space-between; align-items: center; }
+  .quest-status { font-size: .32rem; letter-spacing: 1px; }
+  .quest-status.completed { color: var(--green); }
+  .quest-status.in-progress { color: #facc15; text-shadow: 0 0 8px rgba(250,204,21,0.4); }
+  .quest-xp { font-size: .35rem; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid {
+    display: flex; flex-direction: column; gap: 1.4rem;
+    max-width: 700px;
+  }
+  .skill-item { display: flex; flex-direction: column; gap: .4rem; }
+  .skill-header { display: flex; justify-content: space-between; align-items: center; }
+  .skill-name { font-size: .38rem; color: var(--text); letter-spacing: 1px; }
+  .skill-rank { font-size: .35rem; }
+  .rank-s { color: #facc15; text-shadow: 0 0 6px rgba(250,204,21,0.5); }
+  .rank-a { color: var(--green); text-shadow: 0 0 6px var(--glow); }
+  .rank-b { color: #60a5fa; text-shadow: 0 0 6px rgba(96,165,250,0.5); }
+
+  .xp-bar {
+    width: 100%; height: 14px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green-dk), var(--green));
+    box-shadow: 0 0 8px var(--glow);
+    animation: xpfill 1.5s ease both;
+  }
+  .skill-pct { font-size: .3rem; color: var(--text-dim); align-self: flex-end; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ci-item { display: flex; flex-direction: column; gap: .3rem; }
+  .ci-lbl { font-size: .35rem; color: var(--text-dim); letter-spacing: 1px; }
+  .ci-val { font-size: .4rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-label { font-size: .35rem; color: var(--text-dim); margin-bottom: .3rem; display: block; letter-spacing: 1px; }
+  .form-input {
+    width: 100%;
+    padding: .8rem 1rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    font-size: .9rem;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .form-input:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 10px var(--glow);
+  }
+  .form-input::placeholder { color: var(--text-dim); }
+  .form-textarea { min-height: 120px; resize: vertical; }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--border);
+    background: rgba(8,14,26,0.8);
+  }
+  .ft-left, .ft-right { font-size: .32rem; color: var(--text-dim); }
+  .ft-links { display: flex; gap: 1.5rem; }
+  .ft-link {
+    font-size: .38rem; color: var(--text);
+    transition: color .2s, text-shadow .2s;
+    letter-spacing: 1px;
+  }
+  .ft-link:hover {
+    color: var(--green);
+    text-shadow: 0 0 8px var(--glow);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .hero {
+      flex-direction: column;
+      padding: 6rem 1.5rem 2rem;
+      text-align: center;
+    }
+    .hero-content { max-width: 100%; }
+    .hero-desc { border-left: none; padding-left: 0; }
+    .hero-buttons { justify-content: center; }
+    .breadcrumb { justify-content: center; }
+    .hero-avatar { margin-top: 2rem; }
+    .avatar-frame { width: 200px; height: 230px; margin: 0 auto; }
+    .status-badge { right: -10px; bottom: -8px; }
+
+    .stats-preview {
+      grid-template-columns: 1fr;
+      padding: 2rem 1.5rem;
+    }
+    .quests-grid { grid-template-columns: 1fr; }
+    .section { padding: 3rem 1.5rem; }
+    .contact-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .hero-title { font-size: 1.6rem; }
+    .section-title { font-size: 1rem; }
+
+    .footer { flex-direction: column; gap: .6rem; text-align: center; }
+  }
+</style>
