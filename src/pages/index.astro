@@ -219,18 +219,18 @@ const skillGroups = [
           <span class="ci-val neon">DISPONIBLE</span>
         </div>
       </div>
-      <form class="contact-form">
+      <form class="contact-form" name="contacto" method="POST" data-netlify="true">
         <div class="form-group">
           <label class="form-label pf">NOMBRE</label>
-          <input type="text" class="form-input" placeholder="> Tu nombre..." />
+          <input type="text" name="nombre" class="form-input" placeholder="> Tu nombre..." required />
         </div>
         <div class="form-group">
           <label class="form-label pf">EMAIL</label>
-          <input type="email" class="form-input" placeholder="> tu@email.com" />
+          <input type="email" name="email" class="form-input" placeholder="> tu@email.com" required />
         </div>
         <div class="form-group">
           <label class="form-label pf">MENSAJE</label>
-          <textarea class="form-input form-textarea" placeholder="> Escribe tu mensaje..."></textarea>
+          <textarea name="mensaje" class="form-input form-textarea" placeholder="> Escribe tu mensaje..." required></textarea>
         </div>
         <button type="submit" class="btn btn-primary pf">ENVIAR MENSAJE &#9889;</button>
       </form>
