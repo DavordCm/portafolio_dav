@@ -215,7 +215,7 @@ const skillGroups = [
           <span class="ci-val neon">DISPONIBLE</span>
         </div>
       </div>
-      <form class="contact-form" name="contacto" method="POST" data-netlify="true" action="/success">
+      <form class="contact-form" name="contacto" method="POST" data-netlify="true" action="/success/">
         <input type="hidden" name="form-name" value="contacto" />
         <div class="form-group">
           <label class="form-label">NOMBRE</label>
@@ -252,11 +252,17 @@ const skillGroups = [
   const sections = document.querySelectorAll('section[id], .hero');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  // Click handler
+  // Click handler — scroll suave sin mostrar # en la URL
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
+      history.replaceState(null, '', window.location.pathname);
     });
   });
 
