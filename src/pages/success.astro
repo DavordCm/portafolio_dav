@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="MENSAJE_ENVIADO // PORTFOLIO_OS">
+  <div class="success-page">
+    <div class="success-card">
+      <div class="success-icon">&#9889;</div>
+      <h1 class="pf neon">MENSAJE_ENVIADO</h1>
+      <p>Tu mensaje fue enviado correctamente. Te responderé lo antes posible.</p>
+      <a href="/" class="btn pf">&#8592; VOLVER AL INICIO</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .success-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .success-card {
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 3rem 2.5rem;
+    max-width: 500px;
+  }
+  .success-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  p {
+    color: var(--text-dim);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: .8rem 1.5rem;
+    font-size: .4rem;
+    border: 2px solid var(--green);
+    color: var(--green);
+    transition: all .25s;
+    letter-spacing: 1px;
+  }
+  .btn:hover {
+    background: var(--green);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--glow);
+  }
+</style>

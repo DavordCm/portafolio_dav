@@ -219,7 +219,8 @@ const skillGroups = [
           <span class="ci-val neon">DISPONIBLE</span>
         </div>
       </div>
-      <form class="contact-form" name="contacto" method="POST" data-netlify="true">
+      <form class="contact-form" name="contacto" method="POST" data-netlify="true" action="/success">
+        <input type="hidden" name="form-name" value="contacto" />
         <div class="form-group">
           <label class="form-label pf">NOMBRE</label>
           <input type="text" name="nombre" class="form-input" placeholder="> Tu nombre..." required />
