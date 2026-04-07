@@ -31,16 +31,16 @@ const { title } = Astro.props;
   html { scroll-behavior: smooth; }
 
   :root {
-    --bg:       #080e1a;
-    --bg2:      #0c1428;
-    --card:     #0a1222;
-    --green:    #3b9eff;
-    --green-dim:#2563eb;
-    --green-dk: #1e3a6f;
-    --text:     #c8d8f0;
-    --text-dim: #5a7a9e;
-    --border:   #1a2d50;
-    --glow:     rgba(59, 158, 255, 0.40);
+    --bg:       #0d0a18;
+    --bg2:      #140e24;
+    --card:     #120c20;
+    --green:    #b44aff;
+    --green-dim:#9333ea;
+    --green-dk: #581c87;
+    --text:     #e0d4f0;
+    --text-dim: #8a6aae;
+    --border:   #2d1a50;
+    --glow:     rgba(180, 74, 255, 0.40);
   }
 
   body {
@@ -48,8 +48,8 @@ const { title } = Astro.props;
     background-color: var(--bg);
     color: var(--text);
     background-image:
-      linear-gradient(rgba(26, 45, 80, 0.30) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(26, 45, 80, 0.30) 1px, transparent 1px);
+      linear-gradient(rgba(45, 26, 80, 0.30) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 26, 80, 0.30) 1px, transparent 1px);
     background-size: 32px 32px;
     overflow-x: hidden;
   }
@@ -93,8 +93,8 @@ const { title } = Astro.props;
     to   { opacity: 1; transform: translateY(0); }
   }
   @keyframes pulse-border {
-    0%,100% { box-shadow: 0 0 8px var(--glow), inset 0 0 8px rgba(59,158,255,0.05); }
-    50%     { box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow), inset 0 0 16px rgba(59,158,255,0.08); }
+    0%,100% { box-shadow: 0 0 8px var(--glow), inset 0 0 8px rgba(180,74,255,0.05); }
+    50%     { box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow), inset 0 0 16px rgba(180,74,255,0.08); }
   }
   @keyframes scanmove {
     0%   { top: -6px; }

@@ -3,46 +3,52 @@ import Layout from '../layouts/Layout.astro';
 
 const projects = [
   {
-    id: "QUEST_001",
-    title: "E-COMMERCE ENGINE",
-    stack: ["React", "Node.js", "PostgreSQL"],
-    desc: "Marketplace full-stack con inventario en tiempo real y procesamiento de pagos.",
-    status: "COMPLETED",
-    xp: "+2500 XP",
+    id: "01",
+    title: "AKTIVA ENERGY BARS",
+    stack: ["React 19", "Node.js", "Express", "MySQL"],
+    desc: "E-commerce completo con sistema de roles, pagos integrados, panel administrativo y deploy en Netlify.",
+    year: "2025",
+    link: "https://projecto-aktiva.netlify.app/"
   },
   {
-    id: "QUEST_002",
-    title: "API GATEWAY",
-    stack: ["Rust", "Docker", "Redis"],
-    desc: "REST API de alto rendimiento procesando 10k req/s con zero downtime.",
-    status: "COMPLETED",
-    xp: "+1800 XP",
+    id: "02",
+    title: "LAVAYA",
+    stack: ["React", "Tailwind CSS", "Firebase", "Netlify"],
+    desc: "Web para servicio de lavandería express. Proyecto real para cliente — desarrollo de UI, estructura web y deploy en la nube.",
+    year: "2025",
+    link: "https://lavaya.netlify.app/"
   },
   {
-    id: "QUEST_003",
-    title: "REAL-TIME DASHBOARD",
-    stack: ["Vue.js", "WebSocket", "D3.js"],
-    desc: "Dashboard de analytics en vivo con visualización de datos acelerada por WebGL.",
-    status: "IN_PROGRESS",
-    xp: "+3200 XP",
+    id: "03",
+    title: "FISCALIZACIÓN VEHICULAR",
+    stack: ["React", "Spring Boot", "Node.js", "MySQL", "JWT"],
+    desc: "Sistema web con autenticación JWT, API REST y panel de gestión para control vehicular.",
+    year: "2025",
+    link: "#"
   },
   {
-    id: "QUEST_004",
-    title: "MOBILE APP",
-    stack: ["React Native", "Firebase", "TypeScript"],
-    desc: "App multiplataforma con arquitectura offline-first y notificaciones push.",
-    status: "COMPLETED",
-    xp: "+2100 XP",
+    id: "04",
+    title: "GESTIÓN DE MULTAS",
+    stack: ["C#", "ASP.NET", "SQL Server"],
+    desc: "Sistema de gestión de multas e infracciones con CRUD completo, reportes y base de datos relacional.",
+    year: "2024",
+    link: "#"
   },
 ];
 
-const skills = [
-  { name: "JavaScript / TypeScript", level: 95, rank: "S" },
-  { name: "React / Next.js",         level: 90, rank: "S" },
-  { name: "Node.js / Express",       level: 88, rank: "A" },
-  { name: "Python / Django",         level: 80, rank: "A" },
-  { name: "PostgreSQL / MongoDB",    level: 85, rank: "A" },
-  { name: "Docker / CI-CD",          level: 78, rank: "B" },
+const skillGroups = [
+  {
+    label: "DOMINO",
+    skills: ["React", "JavaScript", "Node.js", "Express", "MySQL", "HTML/CSS", "Git"],
+  },
+  {
+    label: "EXPERIENCIA",
+    skills: ["Spring Boot", "Angular", "TypeScript", "SQL Server", "Firebase", "Tailwind CSS"],
+  },
+  {
+    label: "CONOCIMIENTOS",
+    skills: ["C#", "ASP.NET", "Python", "Docker", "MongoDB"],
+  },
 ];
 ---
 
@@ -53,12 +59,12 @@ const skills = [
 
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar">
-    <div class="nav-logo pf">BIT_STREAM_OS</div>
+    <div class="nav-logo pf">PORTFOLIO</div>
     <ul class="nav-links">
-      <li><a href="#home" class="nav-link active pf">HOME</a></li>
-      <li><a href="#quests" class="nav-link pf">QUESTS</a></li>
-      <li><a href="#stats" class="nav-link pf">STATS</a></li>
-      <li><a href="#contact" class="nav-link pf">SAVE</a></li>
+      <li><a href="#home" class="nav-link active pf">INICIO</a></li>
+      <li><a href="#quests" class="nav-link pf">PROYECTOS</a></li>
+      <li><a href="#stats" class="nav-link pf">SKILLS</a></li>
+      <li><a href="#contact" class="nav-link pf">CONTACTO</a></li>
     </ul>
     <div class="nav-icon pf">&#9608;</div>
   </nav>
@@ -66,15 +72,18 @@ const skills = [
   <!-- ========== HERO ========== -->
   <section id="home" class="hero">
     <div class="hero-content">
-      <div class="level-badge pf">LVL_SENIOR_DEVELOPER</div>
+      <div class="level-badge pf">FULL_STACK_DEVELOPER</div>
       <h1 class="hero-title pf">
-        PROTOCOL <span class="neon">NEON</span>
+        DAVOR <span class="neon">POLLERI LLALLERI</span>
       </h1>
       <p class="hero-desc">
-        Traduciendo lógica de bajo nivel en experiencias digitales de alta fidelidad.
-        Especializado en <span class="highlight">sistemas pixel-perfect</span>,
-        <span class="highlight">optimización en tiempo real</span>,
-        y pureza arquitectónica.
+        Desarrollo aplicaciones web completas — del diseño al deploy.
+        Trabajo con <span class="highlight">React</span>,
+        <span class="highlight">Node.js</span> y <span class="highlight">MySQL</span>.
+        Egresado en Desarrollo de Sistemas (IDAT) y actualmente cursando
+        <span class="highlight">Ingeniería de Sistemas en la UPC</span>.
+        Con proyectos reales en producción con pagos integrados,
+        sistema de roles y paneles administrativos.
       </p>
       <div class="hero-buttons">
         <a href="#quests" class="btn btn-primary pf">VIEW QUESTS &rarr;</a>
@@ -106,7 +115,7 @@ const skills = [
       <div class="status-badge pf">
         <span class="status-dot"></span>
         STATUS<br/>
-        <span class="neon">STABLE // v1.0.GB</span>
+        <span class="neon">DISPONIBLE // LIMA, PE</span>
       </div>
     </div>
   </section>
@@ -115,39 +124,41 @@ const skills = [
   <section class="stats-preview">
     <div class="stat-card">
       <div class="stat-header">
-        <span class="stat-label pf">COMMITS_DEPLOYED</span>
-        <span class="stat-arrows pf">&lt; &gt;</span>
+        <span class="stat-label pf">PROYECTOS_EN_PRODUCCIÓN</span>
       </div>
-      <div class="stat-value pf neon">12,482+</div>
-      <p class="stat-desc">Backends robustos y frontends optimizados en 50+ proyectos comerciales.</p>
+      <div class="stat-value pf neon">4+</div>
+      <p class="stat-desc">Aplicaciones web desplegadas y funcionando para clientes reales.</p>
     </div>
     <div class="stat-card">
       <div class="stat-header">
-        <span class="stat-label pf">SYSTEM_XP</span>
+        <span class="stat-label pf">TECNOLOGÍAS</span>
       </div>
-      <div class="stat-value pf neon">LVL 99</div>
-      <p class="stat-desc">Dominio en React, Node.js y entornos de desarrollo modernos.</p>
+      <div class="stat-value pf neon">10+</div>
+      <p class="stat-desc">Frontend, backend, bases de datos y herramientas de deploy.</p>
     </div>
     <div class="stat-card">
       <div class="stat-header">
-        <span class="stat-label pf">UPTIME</span>
+        <span class="stat-label pf">FORMACIÓN</span>
       </div>
-      <div class="stat-value pf neon">99.9%</div>
-      <p class="stat-desc">Entrega confiable y código de alto rendimiento.</p>
+      <div class="stat-value pf neon">2</div>
+      <p class="stat-desc">Carreras técnicas — IDAT (egresado) y UPC (en curso).</p>
     </div>
   </section>
 
   <!-- ========== QUESTS / PROJECTS ========== -->
   <section id="quests" class="section">
     <div class="section-header">
-      <div class="section-tag pf">// ACTIVE_QUESTS</div>
-      <h2 class="section-title pf">QUEST_LOG</h2>
-      <p class="section-sub">Misiones completadas y en progreso en el reino digital.</p>
+      <div class="section-tag pf">// MIS_PROYECTOS</div>
+      <h2 class="section-title pf">PROYECTOS</h2>
+      <p class="section-sub">Aplicaciones reales desplegadas en producción.</p>
     </div>
     <div class="quests-grid">
       {projects.map((p) => (
-        <div class="quest-card">
-          <div class="quest-id pf">{p.id}</div>
+        <a href={p.link} target="_blank" rel="noopener" class="quest-card" style={p.link === '#' ? 'pointer-events:none' : ''}>
+          <div class="quest-top">
+            <span class="quest-id pf">{p.id}</span>
+            <span class="quest-year pf">{p.year}</span>
+          </div>
           <h3 class="quest-title pf">{p.title}</h3>
           <p class="quest-desc">{p.desc}</p>
           <div class="quest-stack">
@@ -155,35 +166,28 @@ const skills = [
               <span class="tech-tag pf">{tech}</span>
             ))}
           </div>
-          <div class="quest-footer">
-            <span class={`quest-status pf ${p.status === 'IN_PROGRESS' ? 'in-progress' : 'completed'}`}>
-              [{p.status}]
-            </span>
-            <span class="quest-xp pf neon">{p.xp}</span>
-          </div>
-        </div>
+          {p.link !== '#' && <span class="quest-link pf neon">VER DEMO →</span>}
+        </a>
       ))}
     </div>
   </section>
 
-  <!-- ========== SKILLS / STATS ========== -->
+  <!-- ========== SKILLS ========== -->
   <section id="stats" class="section">
     <div class="section-header">
-      <div class="section-tag pf">// SKILL_TREE</div>
-      <h2 class="section-title pf">CHARACTER_STATS</h2>
-      <p class="section-sub">Atributos principales y habilidades desbloqueadas.</p>
+      <div class="section-tag pf">// TECNOLOGÍAS</div>
+      <h2 class="section-title pf">SKILLS</h2>
+      <p class="section-sub">Herramientas con las que trabajo día a día.</p>
     </div>
-    <div class="skills-grid">
-      {skills.map((s) => (
-        <div class="skill-item">
-          <div class="skill-header">
-            <span class="skill-name pf">{s.name}</span>
-            <span class={`skill-rank pf rank-${s.rank.toLowerCase()}`}>[{s.rank}]</span>
+    <div class="skills-groups">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3 class="skill-group-label pf">{group.label}</h3>
+          <div class="skill-tags">
+            {group.skills.map((skill) => (
+              <span class="skill-tag pf">{skill}</span>
+            ))}
           </div>
-          <div class="xp-bar">
-            <div class="xp-fill" style={`width:${s.level}%`}></div>
-          </div>
-          <span class="skill-pct pf">{s.level}/100</span>
         </div>
       ))}
     </div>
@@ -192,44 +196,31 @@ const skills = [
   <!-- ========== CONTACT ========== -->
   <section id="contact" class="section">
     <div class="section-header">
-      <div class="section-tag pf">// SEND_REQUEST</div>
-      <h2 class="section-title pf">INIT_CONTACT</h2>
-      <p class="section-sub">¿Listo para desplegar un nuevo proyecto? Conectemos.</p>
+      <div class="section-tag pf">// CONTACTO</div>
+      <h2 class="section-title pf">CONTÁCTAME</h2>
+      <p class="section-sub">¿Tienes un proyecto en mente? Hablemos.</p>
     </div>
-    <div class="contact-container">
-      <div class="contact-info">
-        <div class="ci-item pf">
-          <span class="ci-lbl">EMAIL_ADDR</span>
-          <a href="mailto:tu@email.com" class="ci-val neon">tu@email.com</a>
-        </div>
-        <div class="ci-item pf">
-          <span class="ci-lbl">GITHUB</span>
-          <a href="https://github.com/DavordCm" target="_blank" class="ci-val neon">@DavordCm</a>
-        </div>
-        <div class="ci-item pf">
-          <span class="ci-lbl">LINKEDIN</span>
-          <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="ci-val neon">in/davor-polleri-llalleri</a>
-        </div>
-        <div class="ci-item pf">
-          <span class="ci-lbl">STATUS</span>
-          <span class="ci-val neon">AVAILABLE_FOR_HIRE</span>
-        </div>
-      </div>
-      <form class="contact-form" onsubmit="return false;">
-        <div class="form-group">
-          <label class="form-label pf">IDENTIFIER</label>
-          <input type="text" class="form-input" placeholder="> Tu nombre..." />
-        </div>
-        <div class="form-group">
-          <label class="form-label pf">EMAIL_ADDR</label>
-          <input type="email" class="form-input" placeholder="> tu@email.com" />
-        </div>
-        <div class="form-group">
-          <label class="form-label pf">MESSAGE_BODY</label>
-          <textarea class="form-input form-textarea" placeholder="> Iniciar transmisión..."></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary pf">SEND_REQUEST &#9889;</button>
-      </form>
+    <div class="contact-grid">
+      <a href="mailto:Davorporleri.21@outlook.com" class="contact-card">
+        <span class="contact-icon">&#9993;</span>
+        <span class="contact-label pf">EMAIL</span>
+        <span class="contact-value neon">Davorporleri.21@outlook.com</span>
+      </a>
+      <a href="https://github.com/DavordCm" target="_blank" class="contact-card">
+        <span class="contact-icon">&#9881;</span>
+        <span class="contact-label pf">GITHUB</span>
+        <span class="contact-value neon">@DavordCm</span>
+      </a>
+      <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="contact-card">
+        <span class="contact-icon">&#9733;</span>
+        <span class="contact-label pf">LINKEDIN</span>
+        <span class="contact-value neon">Davor Polleri Llalleri</span>
+      </a>
+      <a href="https://wa.me/51966588129" target="_blank" class="contact-card">
+        <span class="contact-icon">&#9742;</span>
+        <span class="contact-label pf">WHATSAPP</span>
+        <span class="contact-value neon">+51 966 588 129</span>
+      </a>
     </div>
   </section>
 
@@ -245,6 +236,37 @@ const skills = [
   </footer>
 
 </Layout>
+
+<script>
+  // Active nav link on scroll & click
+  const sections = document.querySelectorAll('section[id], .hero');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Click handler
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  // Scroll handler
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(l => {
+          l.classList.remove('active');
+          if (l.getAttribute('href') === `#${id}`) {
+            l.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(s => { if (s.id) observer.observe(s); });
+</script>
 
 <!-- ========================================= -->
 <!--                 STYLES                    -->
@@ -264,7 +286,7 @@ const skills = [
     content: '';
     position: absolute;
     left: 0; width: 100%; height: 6px;
-    background: rgba(59,158,255,0.06);
+    background: rgba(180,74,255,0.06);
     animation: scanmove 4s linear infinite;
   }
 
@@ -273,7 +295,7 @@ const skills = [
     position: fixed; top: 0; left: 0; right: 0;
     display: flex; align-items: center; justify-content: space-between;
     padding: .75rem 2rem;
-    background: rgba(8,14,26,0.92);
+    background: rgba(13,10,24,0.92);
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(8px);
     z-index: 100;
@@ -340,7 +362,7 @@ const skills = [
     letter-spacing: 1px;
   }
   .btn-primary {
-    background: rgba(59,158,255,0.08);
+    background: rgba(180,74,255,0.08);
   }
   .btn-primary:hover {
     background: var(--green);
@@ -348,7 +370,7 @@ const skills = [
     box-shadow: 0 0 20px var(--glow), 0 0 40px var(--glow);
   }
   .btn-secondary:hover {
-    background: rgba(59,158,255,0.12);
+    background: rgba(180,74,255,0.12);
     box-shadow: 0 0 12px var(--glow);
   }
 
@@ -451,7 +473,7 @@ const skills = [
     margin-bottom: .6rem; letter-spacing: 1px;
   }
   .section-title {
-    font-size: 1.4rem; margin-bottom: .6rem;
+    font-size: 1.6rem; margin-bottom: .6rem;
     color: var(--green);
     text-shadow: 0 0 10px var(--glow);
   }
@@ -478,7 +500,9 @@ const skills = [
     box-shadow: 0 0 16px var(--glow);
     transform: translateY(-3px);
   }
-  .quest-id { font-size: .32rem; color: var(--text-dim); margin-bottom: .5rem; letter-spacing: 1px; }
+  .quest-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: .5rem; }
+  .quest-id { font-size: .32rem; color: var(--text-dim); letter-spacing: 1px; }
+  .quest-year { font-size: .32rem; color: var(--text-dim); letter-spacing: 1px; }
   .quest-title { font-size: .55rem; color: var(--green); margin-bottom: .8rem; letter-spacing: 1px; }
   .quest-desc { font-size: .85rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 1rem; }
   .quest-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
@@ -489,76 +513,65 @@ const skills = [
     color: var(--text-dim);
     letter-spacing: 1px;
   }
-  .quest-footer { display: flex; justify-content: space-between; align-items: center; }
-  .quest-status { font-size: .32rem; letter-spacing: 1px; }
-  .quest-status.completed { color: var(--green); }
-  .quest-status.in-progress { color: #facc15; text-shadow: 0 0 8px rgba(250,204,21,0.4); }
-  .quest-xp { font-size: .35rem; }
+  .quest-link { font-size: .38rem; display: block; letter-spacing: 1px; }
 
   /* ---------- SKILLS ---------- */
-  .skills-grid {
-    display: flex; flex-direction: column; gap: 1.4rem;
-    max-width: 700px;
+  .skills-groups {
+    display: flex; flex-direction: column; gap: 2.5rem;
   }
-  .skill-item { display: flex; flex-direction: column; gap: .4rem; }
-  .skill-header { display: flex; justify-content: space-between; align-items: center; }
-  .skill-name { font-size: .38rem; color: var(--text); letter-spacing: 1px; }
-  .skill-rank { font-size: .35rem; }
-  .rank-s { color: #facc15; text-shadow: 0 0 6px rgba(250,204,21,0.5); }
-  .rank-a { color: var(--green); text-shadow: 0 0 6px var(--glow); }
-  .rank-b { color: #60a5fa; text-shadow: 0 0 6px rgba(96,165,250,0.5); }
-
-  .xp-bar {
-    width: 100%; height: 14px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    overflow: hidden;
+  .skill-group-label {
+    font-size: .5rem; color: var(--green); margin-bottom: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px var(--glow);
   }
-  .xp-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--green-dk), var(--green));
-    box-shadow: 0 0 8px var(--glow);
-    animation: xpfill 1.5s ease both;
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: .6rem;
   }
-  .skill-pct { font-size: .3rem; color: var(--text-dim); align-self: flex-end; }
-
-  /* ---------- CONTACT ---------- */
-  .contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 3rem;
-  }
-  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-  .ci-item { display: flex; flex-direction: column; gap: .3rem; }
-  .ci-lbl { font-size: .35rem; color: var(--text-dim); letter-spacing: 1px; }
-  .ci-val { font-size: .4rem; }
-
-  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .form-label { font-size: .35rem; color: var(--text-dim); margin-bottom: .3rem; display: block; letter-spacing: 1px; }
-  .form-input {
-    width: 100%;
-    padding: .8rem 1rem;
-    background: var(--bg2);
+  .skill-tag {
+    font-size: .4rem;
+    padding: .5rem .9rem;
     border: 1px solid var(--border);
     color: var(--text);
-    font-family: 'Courier New', monospace;
-    font-size: .9rem;
-    outline: none;
-    transition: border-color .2s, box-shadow .2s;
+    letter-spacing: 1px;
+    transition: all .3s;
   }
-  .form-input:focus {
+  .skill-tag:hover {
     border-color: var(--green);
-    box-shadow: 0 0 10px var(--glow);
+    color: var(--green);
+    box-shadow: 0 0 12px var(--glow);
   }
-  .form-input::placeholder { color: var(--text-dim); }
-  .form-textarea { min-height: 120px; resize: vertical; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .contact-card {
+    display: flex; flex-direction: column; align-items: center;
+    gap: .6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all .3s;
+    text-decoration: none;
+  }
+  .contact-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 16px var(--glow);
+    transform: translateY(-3px);
+  }
+  .contact-icon { font-size: 1.8rem; }
+  .contact-label { font-size: .45rem; color: var(--text-dim); letter-spacing: 2px; }
+  .contact-value { font-size: .45rem; }
 
   /* ---------- FOOTER ---------- */
   .footer {
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem 2rem;
     border-top: 1px solid var(--border);
-    background: rgba(8,14,26,0.8);
+    background: rgba(13,10,24,0.8);
   }
   .ft-left, .ft-right { font-size: .32rem; color: var(--text-dim); }
   .ft-links { display: flex; gap: 1.5rem; }
@@ -593,7 +606,7 @@ const skills = [
     }
     .quests-grid { grid-template-columns: 1fr; }
     .section { padding: 3rem 1.5rem; }
-    .contact-container {
+    .contact-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
