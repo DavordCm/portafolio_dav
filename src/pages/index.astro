@@ -200,22 +200,40 @@ const skillGroups = [
       <h2 class="section-title pf">CONTÁCTAME</h2>
       <p class="section-sub">¿Tienes un proyecto en mente? Hablemos.</p>
     </div>
-    <div class="contact-grid">
-      <a href="mailto:Davorporleri.21@outlook.com" class="contact-card">
-        <span class="contact-icon">&#9993;</span>
-        <span class="contact-label pf">EMAIL</span>
-        <span class="contact-value neon">Davorporleri.21@outlook.com</span>
-      </a>
-      <a href="https://github.com/DavordCm" target="_blank" class="contact-card">
-        <span class="contact-icon">&#9881;</span>
-        <span class="contact-label pf">GITHUB</span>
-        <span class="contact-value neon">@DavordCm</span>
-      </a>
-      <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="contact-card">
-        <span class="contact-icon">&#9733;</span>
-        <span class="contact-label pf">LINKEDIN</span>
-        <span class="contact-value neon">Davor Polleri Llalleri</span>
-      </a>
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="ci-item pf">
+          <span class="ci-lbl">EMAIL</span>
+          <a href="mailto:Davorporleri.21@outlook.com" class="ci-val neon">Davorporleri.21@outlook.com</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">GITHUB</span>
+          <a href="https://github.com/DavordCm" target="_blank" class="ci-val neon">@DavordCm</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">LINKEDIN</span>
+          <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" class="ci-val neon">in/davor-polleri-llalleri</a>
+        </div>
+        <div class="ci-item pf">
+          <span class="ci-lbl">STATUS</span>
+          <span class="ci-val neon">DISPONIBLE</span>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-group">
+          <label class="form-label pf">NOMBRE</label>
+          <input type="text" class="form-input" placeholder="> Tu nombre..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label pf">EMAIL</label>
+          <input type="email" class="form-input" placeholder="> tu@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label pf">MENSAJE</label>
+          <textarea class="form-input form-textarea" placeholder="> Escribe tu mensaje..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary pf">ENVIAR MENSAJE &#9889;</button>
+      </form>
     </div>
   </section>
 
@@ -537,29 +555,35 @@ const skillGroups = [
   }
 
   /* ---------- CONTACT ---------- */
-  .contact-grid {
+  .contact-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 3rem;
   }
-  .contact-card {
-    display: flex; flex-direction: column; align-items: center;
-    gap: .6rem;
-    background: var(--card);
+  .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+  .ci-item { display: flex; flex-direction: column; gap: .3rem; }
+  .ci-lbl { font-size: .5rem; color: var(--text-dim); letter-spacing: 1px; }
+  .ci-val { font-size: .55rem; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-label { font-size: .5rem; color: var(--text-dim); margin-bottom: .4rem; display: block; letter-spacing: 1px; }
+  .form-input {
+    width: 100%;
+    padding: .8rem 1rem;
+    background: var(--bg2);
     border: 1px solid var(--border);
-    padding: 2rem 1.5rem;
-    text-align: center;
-    transition: all .3s;
-    text-decoration: none;
+    color: var(--text);
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
   }
-  .contact-card:hover {
+  .form-input:focus {
     border-color: var(--green);
-    box-shadow: 0 0 16px var(--glow);
-    transform: translateY(-3px);
+    box-shadow: 0 0 10px var(--glow);
   }
-  .contact-icon { font-size: 1.8rem; }
-  .contact-label { font-size: .45rem; color: var(--text-dim); letter-spacing: 2px; }
-  .contact-value { font-size: .45rem; }
+  .form-input::placeholder { color: var(--text-dim); }
+  .form-textarea { min-height: 120px; resize: vertical; }
 
   /* ---------- FOOTER ---------- */
   .footer {
@@ -601,7 +625,7 @@ const skillGroups = [
     }
     .quests-grid { grid-template-columns: 1fr; }
     .section { padding: 3rem 1.5rem; }
-    .contact-grid {
+    .contact-container {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
