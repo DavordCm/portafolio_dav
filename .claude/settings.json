@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(findstr /i \"cv\")",
+      "WebFetch(domain:portafolio-eta-opal.vercel.app)",
+      "Bash(curl -s \"https://portafolio-eta-opal.vercel.app/\" -L -A \"Mozilla/5.0\" -o \"C:\\\\Users\\\\Davor\\\\Desktop\\\\Astro\\\\portafolio_dav\\\\.ref-source.html\")",
+      "Bash(curl -s \"https://portafolio-eta-opal.vercel.app/assets/index-J9Es8A3k.css\" -L -A \"Mozilla/5.0\" -o \"C:\\\\Users\\\\Davor\\\\Desktop\\\\Astro\\\\portafolio_dav\\\\.ref-style.css\")",
+      "Bash(curl -s \"https://portafolio-eta-opal.vercel.app/assets/index-VGTUHG32.js\" -L -A \"Mozilla/5.0\" -o \"C:\\\\Users\\\\Davor\\\\Desktop\\\\Astro\\\\portafolio_dav\\\\.ref-app.js\")",
+      "Bash(rm \"C:\\\\Users\\\\Davor\\\\Desktop\\\\Astro\\\\portafolio_dav\\\\.ref-source.html\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Davor\\\\Downloads\\\\cv\\\\CV-JhosmanDavidDavorPolleriLlalleri.pdf\" \"c:\\\\Users\\\\Davor\\\\Desktop\\\\Astro\\\\portafolio_dav\\\\public\\\\CV-DavorPolleri.pdf\" -Force)",
+      "PowerShell(npm install --silent 2>&1)",
+      "PowerShell(npm run build 2>&1)",
+      "Bash(curl -s \"https://portafolio-eta-opal.vercel.app/assets/index-VGTUHG32.js\" -L -A \"Mozilla/5.0\" -o \"/tmp/ref-app.js\")",
+      "Read(//tmp/**)",
+      "Bash(grep -oE \"\\\\\"[A-Z][A-Z_ ]{4,40}\\\\\"\" /tmp/ref-app.js)",
+      "Bash(grep -oE \"\\\\\"\\\\\\\\$\\\\\\\\s*[a-zA-Z][^\\\\\"]{5,80}\\\\\"|\\\\\"> [^\\\\\"]{5,80}\\\\\"|\\\\\"davor[^\\\\\"]+\\\\\"|\\\\\"matias[^\\\\\"]+\\\\\"|\\\\\"booting[^\\\\\"]+\\\\\"|\\\\\"INIT[^\\\\\"]+\\\\\"\" /tmp/ref-app.js)",
+      "Bash(grep -oE \"\\\\\"[a-z][a-z_./ -]{8,70}\\\\\"\" /tmp/ref-app.js)",
+      "Bash(rm /tmp/ref-app.js)",
+      "Bash(netstat -ano)",
+      "Bash(start http://localhost:4321/)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Davor\\Desktop\\Astro\\portafolio_dav",
+      "\\tmp"
+    ]
+  }
+}

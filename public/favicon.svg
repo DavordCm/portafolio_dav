@@ -1,18 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" style="image-rendering:pixelated">
-  <!-- Minecraft creeper face - dark/purple theme -->
-  <!-- Background -->
-  <rect width="16" height="16" fill="#1a1a2e"/>
-  <!-- Face outline -->
-  <rect x="1" y="1" width="14" height="14" fill="#0d0a18"/>
-  <!-- Eyes -->
-  <rect x="3" y="4" width="3" height="3" fill="#b44aff"/>
-  <rect x="10" y="4" width="3" height="3" fill="#b44aff"/>
-  <!-- Eye glow -->
-  <rect x="4" y="5" width="1" height="1" fill="#d88aff"/>
-  <rect x="11" y="5" width="1" height="1" fill="#d88aff"/>
-  <!-- Mouth -->
-  <rect x="6" y="7" width="4" height="2" fill="#b44aff"/>
-  <rect x="5" y="9" width="2" height="3" fill="#b44aff"/>
-  <rect x="9" y="9" width="2" height="3" fill="#b44aff"/>
-  <rect x="6" y="9" width="4" height="1" fill="#b44aff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0b0d11"/>
+  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+        font-family="Consolas, 'Courier New', monospace" font-weight="700"
+        font-size="16" fill="#f59e0b">D</text>
 </svg>

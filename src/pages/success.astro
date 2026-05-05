@@ -2,13 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="MENSAJE_ENVIADO // PORTFOLIO_OS">
+<Layout title="Mensaje enviado — Davor Polleri">
   <div class="success-page">
     <div class="success-card">
-      <div class="success-icon">&#9889;</div>
-      <h1 class="pf neon">MENSAJE_ENVIADO</h1>
-      <p>Tu mensaje fue enviado correctamente. Te responderé lo antes posible.</p>
-      <a href="/" class="btn pf">&#8592; VOLVER AL INICIO</a>
+      <div class="success-icon">✓</div>
+      <h1 class="success-title">¡Mensaje enviado!</h1>
+      <p class="success-text">
+        Gracias por escribirme. Te responderé en menos de 24 horas a tu correo.
+      </p>
+      <a href="/" class="btn btn--primary btn--md">← Volver al inicio</a>
     </div>
   </div>
 </Layout>
@@ -16,45 +18,60 @@ import Layout from '../layouts/Layout.astro';
 <style>
   .success-page {
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     padding: 2rem;
+    background: var(--bg-primary);
+    position: relative; overflow: hidden;
+  }
+  .success-page::before {
+    content: ""; position: absolute; inset: -20%;
+    background: radial-gradient(circle at 50% 50%, rgba(245,158,11,0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
   .success-card {
     text-align: center;
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 3rem 2.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem 2.5rem;
     max-width: 500px;
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    position: relative; z-index: 1;
   }
   .success-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+    width: 72px; height: 72px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-border);
+    color: var(--accent);
+    font-size: 2rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
   }
-  h1 {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+  .success-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem; font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
   }
-  p {
-    color: var(--text-dim);
-    font-family: 'Courier New', monospace;
-    font-size: 1rem;
-    line-height: 1.6;
+  .success-text {
+    color: var(--text-secondary);
+    font-size: 1rem; line-height: 1.7;
     margin-bottom: 2rem;
   }
   .btn {
-    display: inline-block;
-    padding: .8rem 1.5rem;
-    font-size: .4rem;
-    border: 2px solid var(--green);
-    color: var(--green);
-    transition: all .25s;
-    letter-spacing: 1px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    font-family: var(--font-body); font-weight: 600;
+    border-radius: var(--radius-full);
+    transition: background var(--duration-fast) ease, transform var(--duration-fast) var(--ease-spring), box-shadow var(--duration-fast) ease;
+    padding: 0.75rem 1.7rem; font-size: 0.95rem;
+    background: var(--accent); color: var(--bg-primary);
+    border: 1px solid var(--accent);
+    box-shadow: 0 2px 12px rgba(245,158,11,0.2);
   }
   .btn:hover {
-    background: var(--green);
-    color: var(--bg);
-    box-shadow: 0 0 20px var(--glow);
+    background: var(--accent-hover); border-color: var(--accent-hover);
+    transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.3);
   }
 </style>
