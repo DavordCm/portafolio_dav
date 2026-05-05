@@ -1,8 +1,14 @@
 ---
 interface Props {
   title: string;
+  description?: string;
 }
-const { title } = Astro.props;
+const {
+  title,
+  description = "Davor Polleri Llalleri — Full Stack Developer (React, Node.js, Spring Boot). E-commerce con pagos integrados, APIs REST con JWT y paneles administrativos. Lima, Perú.",
+} = Astro.props;
+const siteUrl = "https://davorpolleri.netlify.app";
+const ogImage = `${siteUrl}/avatar2.jpg`;
 ---
 <!doctype html>
 <html lang="es">
@@ -11,8 +17,30 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Davor Polleri Llalleri — Full Stack Developer especializado en React, Node.js y MySQL. Portafolio profesional." />
     <meta name="theme-color" content="#f59e0b" />
+    <meta name="author" content="Davor Polleri Llalleri" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Davor Polleri, Full Stack Developer, React, Node.js, Spring Boot, ASP.NET, MySQL, Lima Perú, Portafolio, IDAT, UPC" />
+
+    <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_PE" />
+    <meta property="og:site_name" content="Davor Polleri — Portafolio" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="canonical" href={siteUrl} />
+
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,7 +73,6 @@ const { title } = Astro.props;
 
     --mint:          #34d399;
     --rose:          #f43f5e;
-    --sky:           #60a5fa;
 
     --text-primary:   #e8eaed;
     --text-secondary: #8b919e;

@@ -10,6 +10,7 @@ const projects = [
     desc: "Tienda web completa para venta de barras energéticas andinas. Sistema de roles (cliente y empleado), carrito con filtros dinámicos, pasarela de pagos integrada (Yape QR, PayPal, tarjeta), panel admin con reportes PDF/CSV y conversión automática soles/dólares.",
     stack: ["React", "JavaScript", "CSS", "Netlify"],
     link: "https://projecto-aktiva.netlify.app/",
+    repos: [{ label: "Código", url: "https://github.com/DavordCm/proyecto_AKTIVA" }],
   },
   {
     id: "02",
@@ -19,24 +20,30 @@ const projects = [
     desc: "Plataforma web de lavandería con recojo y entrega a domicilio. Gestión de atención al cliente, seguimiento de pedidos en tiempo real y programación flexible de horarios. Interfaz centrada en rapidez y confianza.",
     stack: ["React", "Tailwind CSS", "Netlify"],
     link: "https://lavaya.netlify.app/",
+    repos: [{ label: "Código", url: "https://github.com/DavordCm/Lavaya" }],
   },
   {
     id: "03",
-    title: "Sistema de Fiscalización Vehicular",
+    title: "Sistema de Fiscalización Vehicular — Muni Chorrillos",
     year: "2024 — 2025",
-    role: "Backend Developer · Freelance",
-    desc: "Backend para gestión de vehículos e infracciones. Rutas seguras con autenticación JWT y control de roles, API REST con CRUD completo sobre MySQL e integración con frontend en React.",
-    stack: ["Node.js", "Express", "MySQL", "JWT", "Spring Boot", "React", "Git"],
+    role: "Full Stack Developer · Freelance",
+    desc: "Sistema web para la Municipalidad de Chorrillos. Backend con rutas seguras (JWT y control de roles), API REST con CRUD completo sobre MySQL, integrado con frontend en React para la gestión de vehículos e infracciones.",
+    stack: ["React", "Node.js", "Express", "Spring Boot", "MySQL", "JWT", "Git"],
     link: "",
+    repos: [
+      { label: "Frontend", url: "https://github.com/DavordCm/react_munichorrillos" },
+      { label: "Backend",  url: "https://github.com/DavordCm/ec3" },
+    ],
   },
   {
     id: "04",
-    title: "Gestión de Multas e Infracciones",
+    title: "Sistema Corporativo — Gestión de Multas",
     year: "2024",
-    role: "Full Stack Developer · Freelance",
-    desc: "Sistema CRUD para administración y registro de multas. Optimización del acceso a datos, automatización de procesos repetitivos y generación de reportes dinámicos con SQL Server.",
+    role: "Full Stack Developer · Colaboración",
+    desc: "Sistema CRUD para administración y registro de multas e infracciones, desarrollado en equipo. Optimización del acceso a datos, automatización de procesos repetitivos y generación de reportes dinámicos con SQL Server.",
     stack: ["C#", "ASP.NET", "SQL Server"],
     link: "",
+    repos: [{ label: "Código", url: "https://github.com/AlexCarbajoG/SistemaCorporativo2" }],
   },
 ];
 
@@ -295,11 +302,20 @@ const languages = [
                 </div>
               </div>
               <div class="projects__actions">
-                {p.link ? (
+                {p.link && (
                   <a href={p.link} target="_blank" rel="noopener" class="btn btn--primary btn--sm">
                     Ver demo →
                   </a>
-                ) : (
+                )}
+                {p.repos.map((r) => (
+                  <a href={r.url} target="_blank" rel="noopener" class="btn btn--ghost btn--sm projects__repo-btn">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.16c-3.2.7-3.87-1.37-3.87-1.37-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.25 3.34.95.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.96 10.96 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.41-5.27 5.69.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.56 4.56-1.52 7.85-5.83 7.85-10.91C23.5 5.65 18.35.5 12 .5z"/>
+                    </svg>
+                    {r.label}
+                  </a>
+                ))}
+                {!p.link && p.repos.length === 0 && (
                   <span class="projects__warning">Demo privada</span>
                 )}
               </div>
@@ -364,7 +380,6 @@ const languages = [
           </p>
           <div class="contact__details">
             <a href="mailto:Davorpolleri.21@outlook.com" class="contact__anchor">Davorpolleri.21@outlook.com</a>
-            <a href="tel:+51966588129" class="contact__anchor">+51 966 588 129</a>
             <a href="https://github.com/DavordCm" target="_blank" rel="noopener" class="contact__anchor">github.com/DavordCm</a>
             <a href="https://www.linkedin.com/in/davor-polleri-llalleri/" target="_blank" rel="noopener" class="contact__anchor">linkedin.com/in/davor-polleri</a>
           </div>
@@ -662,6 +677,36 @@ const languages = [
     el.style.animationDelay = 0.15 + i * 0.12 + 's';
   });
 
+  // ========== COUNTER ANIMATION (stats) ==========
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  function animateCount(el, target, suffix, duration = 1400) {
+    const t0 = performance.now();
+    function tick(now) {
+      const p = Math.min(1, (now - t0) / duration);
+      const value = Math.floor(easeOutCubic(p) * target);
+      el.textContent = value + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      if (el.dataset.counted === '1') return;
+      el.dataset.counted = '1';
+      const raw = (el.textContent || '').trim();
+      const match = raw.match(/^(\d+)(\D*)$/);
+      if (!match) return;
+      const target = parseInt(match[1], 10);
+      const suffix = match[2] || '';
+      el.textContent = '0' + suffix;
+      animateCount(el, target, suffix);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.about__stat-value').forEach((el) => countObserver.observe(el));
+
   // Start boot
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runBoot);
@@ -781,7 +826,6 @@ const languages = [
   }
   .btn--sm { padding: 0.55rem 1.2rem; font-size: 0.85rem; }
   .btn--md { padding: 0.75rem 1.7rem; font-size: 0.95rem; }
-  .btn--lg { padding: 0.9rem 2rem; font-size: 1.05rem; }
   .btn--primary {
     background: var(--accent); color: var(--bg-primary); border: 1px solid var(--accent);
     box-shadow: 0 2px 12px rgba(245,158,11,0.2);
@@ -797,6 +841,22 @@ const languages = [
     background: var(--bg-tertiary); border-color: var(--accent-border); color: var(--accent);
     transform: translateY(-2px);
   }
+  .btn--ghost {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+  }
+  .btn--ghost:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-border);
+    background: var(--bg-elevated);
+    transform: translateY(-2px);
+  }
+  .projects__repo-btn svg {
+    flex-shrink: 0;
+    transition: transform var(--duration-fast) var(--ease-spring);
+  }
+  .projects__repo-btn:hover svg { transform: rotate(-8deg) scale(1.1); }
 
   /* ========== HERO ========== */
   .hero {
@@ -980,7 +1040,6 @@ const languages = [
     font-size: 0.78rem; font-weight: 500;
     font-family: var(--font-mono); letter-spacing: 0.01em;
   }
-  .tag--default { background: var(--accent); color: var(--bg-primary); }
   .tag--muted   { background: var(--bg-tertiary); color: var(--text-secondary); border: 1px solid var(--border-subtle); }
   .tag--outline { background: transparent; color: var(--accent); border: 1px solid var(--accent-border); }
 
@@ -1117,7 +1176,10 @@ const languages = [
   .projects__tags-list {
     display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem;
   }
-  .projects__actions { display: flex; gap: 1rem; align-items: center; }
+  .projects__actions {
+    display: flex; gap: 0.6rem; align-items: center;
+    flex-wrap: wrap;
+  }
 
   /* ========== EDUCATION ========== */
   .education__list {
